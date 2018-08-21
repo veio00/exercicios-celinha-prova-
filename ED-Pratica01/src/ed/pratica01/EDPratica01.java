@@ -19,8 +19,8 @@ public class EDPratica01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      E6();
-      
+        E6();
+
     }
 
     public void E1() {
@@ -158,21 +158,31 @@ public class EDPratica01 {
     }
 
     public static void exibeNum10a20(int[][] matriz) {
-        int soma =0;
+        int soma = 0;
+        int total = 0;
+        int somaPares = 0;
         for (int linha = 0; linha < matriz.length; linha++) {
             for (int coluna = 0; coluna < matriz[0].length; coluna++) {
-                if (matriz[linha][coluna] < 21 && 9  < matriz[linha][coluna]) {
+                if (matriz[linha][coluna] < 21 && 9 < matriz[linha][coluna]) {
                     soma = soma + 1;
-                } 
+                }
             }
-            System.out.println("na linha "+(linha+1)+" tem "+ soma + " numeros entre 10 e 20");
+            System.out.println("na linha " + (linha + 1) + " tem " + soma + " numeros entre 10 e 20");
             System.out.println("");
-            soma =0;
+            soma = 0;
         }
+
     }
-    
-    public static void E6(){
-          int[][] matriz = new int[4][3];
+
+    public static void E6() {
+        System.out.println("Digite o numero de colunas");
+        int numeroColunas = read.nextInt();
+
+        System.out.println("Digite o numero de Linhas");
+        int numeroLinhas = read.nextInt();
+
+        int[][] matriz = new int[numeroColunas][numeroLinhas];
+
         for (int linha = 0; linha < matriz.length; linha++) {
             for (int coluna = 0; coluna < matriz[0].length; coluna++) {
 
@@ -181,6 +191,25 @@ public class EDPratica01 {
             }
         }
         exibeNum10a20(matriz);
+        System.out.println("A Media é " + mediaPares(matriz));
+
     }
-    
+
+    public static int mediaPares(int[][] matriz) {
+        int soma = 0;
+        int total = 0;
+        int somaPares = 0;
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+                if (matriz[linha][coluna] < 21 && 9 < matriz[linha][coluna]) {
+                    soma = soma + 1;
+                    somaPares = somaPares + matriz[linha][coluna];
+                }
+            }
+            total = total + soma;
+            soma = 0;
+        }
+
+        return somaPares / total;
+    }
 }
