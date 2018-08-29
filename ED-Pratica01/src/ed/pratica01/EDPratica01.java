@@ -19,8 +19,49 @@ public class EDPratica01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        E6();
+        int[][] matriz1 = new int[3][4];
+        int[][] matriz2 = new int[4][2];
 
+        for (int linha = 0; linha < matriz1.length; linha++) {
+            for (int coluna = 0; coluna < matriz1[0].length; coluna++) {
+
+                System.out.println("Digite o numero da matriz 1 ");
+                matriz1[linha][coluna] = read.nextInt();
+            }
+        }
+        for (int linha = 0; linha < matriz2.length; linha++) {
+            for (int coluna = 0; coluna < matriz2[0].length; coluna++) {
+
+                System.out.println("Digite o numero da matriz 2 ");
+                matriz2[linha][coluna] = read.nextInt();
+            }
+        }
+
+        int[][] matriz3 = new int[3][2];
+
+        for (int linha = 0; linha < matriz3.length; linha++) {
+            for (int coluna = 0; coluna < matriz3[0].length; coluna++) {
+
+                    for (int elementoX = 0; elementoX < matriz2.length; elementoX++) {
+
+                            System.out.print(matriz1[linha][elementoX] + " x \t");
+                            System.out.print(matriz2[elementoX][coluna] + " =  \t");
+                            System.out.println(matriz3[linha][coluna] = matriz3[linha][coluna] + (matriz1[linha][elementoX] * matriz2[elementoX][coluna]));
+                            System.out.println("");
+
+                 
+                }
+
+            }
+            System.out.println("");
+        }
+
+        for (int linha = 0; linha < matriz3.length; linha++) {
+            for (int coluna = 0; coluna < matriz3[0].length; coluna++) {
+                System.out.print(matriz3[linha][coluna] + " \t");
+            }
+            System.out.println("");
+        }
     }
 
     public void E1() {
@@ -212,4 +253,84 @@ public class EDPratica01 {
 
         return somaPares / total;
     }
+
+    public static void E7() {
+        int[][] matriz = new int[3][4];
+
+        String posicaoMaior = "";
+        String posicaoMenor = "";
+
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+
+                System.out.println("Digite o numero");
+                matriz[linha][coluna] = read.nextInt();
+            }
+        }
+
+        int maior = matriz[0][0]; //Integer.MIN_VALUE;
+        int menor = matriz[0][0];//Integer.MAX_VALUE;
+
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+                if (matriz[linha][coluna] >= maior) {
+                    maior = matriz[linha][coluna];
+                    posicaoMaior = "Posição: " + (linha + 1) + "X" + (coluna + 1);
+                }
+                if (matriz[linha][coluna] > menor) {
+                } else {
+                    menor = matriz[linha][coluna];
+                    posicaoMenor = "Posição: " + (linha + 1) + "X" + (coluna + 1);
+                }
+
+            }
+        }
+        System.out.println("O maior é: " + maior + " e esta na " + posicaoMaior);
+        System.out.println("O menor é: " + menor + " e esta na " + posicaoMenor);
+    }
+
+    public static void E8() {
+        int n = 0;
+        boolean sair = false;
+        while (!sair) {
+            System.out.println("Digite o numero maior que 1 e menor que 6: ");
+            n = read.nextInt();
+            if (n > 1 && 6 > n) {
+                sair = true;
+            } else {
+                System.out.println("Você não sabe ler ?");
+            }
+        }
+
+        int[][] matriz = new int[n][n];
+
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+
+                System.out.println("Digite o numero");
+                matriz[linha][coluna] = read.nextInt();
+            }
+        }
+
+        int diagonalPrimaria = 0;
+        int diagonalSecundaria = 0;
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+
+                if (coluna == linha) {
+                    diagonalPrimaria = diagonalPrimaria + matriz[linha][coluna];
+                }
+                if (coluna + linha == matriz.length - 1) {
+                    diagonalSecundaria = diagonalSecundaria + matriz[linha][coluna];
+                }
+
+                System.out.print(matriz[linha][coluna] + " \t");
+            }
+            System.out.println("");
+        }
+
+        System.out.println("diagonal primaria: " + diagonalPrimaria);
+        System.out.println("diagonal secundaria:" + diagonalSecundaria);
+    }
+
 }
